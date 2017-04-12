@@ -1,0 +1,52 @@
+<html ng-app="Schedular">
+
+<head>
+    <title>Day Schedular</title>
+    <script src="/angular.js"></script>
+    <script src="/app.js"></script>
+    <link type="text/css" rel="stylesheet" href="/styling.css">
+</head>
+
+<body>
+    <center>
+        <h1>Schedular</h1>
+        <h2> Dots will get Connected. Do your best Today</h2>
+   
+    <div>
+        <p> Enter Your Task details </p>
+    </div>
+    <div ng-controller="TodoCtrl as ctrl">
+        <input type="text" width="200" ng-model="ctrl.newTodo" placeholder="Add New Items">
+        <button ng-click="ctrl.addNewTodo()">Add</button>
+        <div>
+            <p> Action Items </p>
+            <button ng-hide="ctrl.editMode" ng-click="ctrl.TriggerEditMode()">Edit</button>
+            <button ng-show="ctrl.editMode" ng-click="ctrl.TriggerEditMode()">Save Changes</button>
+            <ol>
+                <li ng-repeat="x in ctrl.todos track by $index">
+                    <span ng-hide="ctrl.editMode" ng-bind="x"></span>
+                    <input ng-model="x" type="text" ng-show="ctrl.editMode">   
+                    <button ng-hide="ctrl.editMode" ng-click="ctrl.DeleteTodo($index)">Delete</button>                                   
+                </li>
+
+                <br>                
+            </ol> 
+        </div>
+    </div>
+  
+        <footer>The ElitmusZone Production-Version 1.0.0 </footer>
+    </center>
+</body>
+
+
+</html>
+
+<!-- ng-click needs to be defined for each button 
+Order List
+
+Edit Button 
+Delete Once completed
+Action
+1. Action Items which needs to performed to 
+1.1 Delete Option-- After the completion of array
+1.2 Edit Option-- If any changes is required in this existing functionality
